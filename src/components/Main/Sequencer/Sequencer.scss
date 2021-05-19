@@ -1,0 +1,22 @@
+$main: #205BAD;
+$main-light: #C4D4EA;
+$main-darker-light: #8EACD6;
+
+.sequencer{
+    display: flex;
+    flex-direction: column;
+}
+.channel{
+    display: flex;
+    flex-direction: row;
+}
+.pad{
+    height: 34px;
+    width: 34px;
+    background: $main-light;
+    margin: 1.5px 1.5px;
+    &:hover{
+        background: $main-darker-light;
+        cursor: pointer;
+    }
+}

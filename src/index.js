@@ -1,12 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { SelectProvider } from './contexts/SelectContext';
+import { SelectedKitProvider } from './contexts/SelectedKitContext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <SelectedKitProvider>
+      <SelectProvider>
+        <App />
+      </SelectProvider>
+    </SelectedKitProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
