@@ -5,14 +5,17 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { SelectProvider } from './contexts/SelectContext';
 import { SelectedKitProvider } from './contexts/SelectedKitContext';
+import { PlayProvider } from './contexts/PlayContext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <SelectedKitProvider>
-      <SelectProvider>
-        <App />
-      </SelectProvider>
-    </SelectedKitProvider>
+    <PlayProvider>
+      <SelectedKitProvider>
+        <SelectProvider>
+          <App />
+        </SelectProvider>
+      </SelectedKitProvider>
+    </PlayProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

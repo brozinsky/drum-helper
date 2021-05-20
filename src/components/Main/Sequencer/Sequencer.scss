@@ -5,6 +5,8 @@ $main-darker-light: #8EACD6;
 .sequencer{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    margin: 0.2rem 0;
 
     &__label{
         height: 34px;
