@@ -4,7 +4,7 @@ import RoomServiceIcon from '@material-ui/icons/RoomService';
 const AssistButton = () => {
     return (
         <button className='library__button'>
-            Assist <RoomServiceIcon />
+            Assist <RoomServiceIcon className='library__button-icon' />
         </button>
     )
 }

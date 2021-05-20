@@ -5,7 +5,7 @@ import './BotPanel.scss'
 const PlayButton = () => {
     return (
         <button className='panel__play-button'>
-            <PlayArrowIcon />
+            <PlayArrowIcon className='panel__play-icon' />
         </button>
     )
 }

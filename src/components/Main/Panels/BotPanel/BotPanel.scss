@@ -1,9 +1,33 @@
+$main-color: #205BAD;
+$main-light: #C4D4EA;
+$main-darker-light: #8EACD6;
+$main-darkest-light: #467ac2;
+
 .panel{
     &__bot-panel{
         display:flex;
         flex-direction: row;
         justify-content: space-between;
         width: 100%;
+    }
+
+    &__play{
+        &-button{
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            width: 3rem;
+            height: 3rem;
+            background: $main-darkest-light;
+            &:hover{
+                background: $main-color;
+            }
+        }
+        &-icon{
+            color: #fff;
+        }
     }
 
     &__buttons-container{
@@ -13,16 +37,29 @@
     }
 
     &__icon-button{
-        &-container{
-            display:flex;
-            flex-direction: column;
-            justify-content: space-between;
+        display:flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 0.2rem;
+        background: transparent;
+
+        &:hover .panel__icon-button-icon{
+            color: $main-darkest-light;
         }
+        &:hover .panel__icon-button-title{
+            color: $main-darkest-light;
+        }
+
         &-icon{
-
+            color: $main-darker-light;
+            transform: scale(1.2);
+            margin: 0.4rem 0.2rem;
         }
-        &-title{
 
+        &-title{
+            color: $main-darker-light;
+            text-transform: uppercase;
         }
     }
 

@@ -1,3 +1,8 @@
+$main-color: #205BAD;
+$main-light: #C4D4EA;
+$main-darker-light: #8EACD6;
+$main-darkest-light: #467ac2;
+
 .library{
     margin: 0 auto;
     width: 44rem;
@@ -20,10 +25,25 @@
     }
 
     &__button{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
         width: 10rem;
         align-self: center;
         margin-top: 1rem;
         padding: 0.5rem;
-    }
+        border-radius: 20px;
+        background: $main-darkest-light;
+        color: #fff;
+        font-size: 1.3rem;
 
+        &:hover{
+            background: $main-color;
+        }
+
+        &-icon{
+            margin-left: 0.5rem;
+        }
+    }
 }
