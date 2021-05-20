@@ -1,7 +1,8 @@
 import React from 'react'
-import TopPanel from './TopPanel'
+import './Main.scss'
+import TopPanel from './Panels/TopPanel/TopPanel'
 import Sequencer from './Sequencer/Sequencer'
-import BotPanel from './BotPanel'
+import BotPanel from './Panels/BotPanel/BotPanel'
 
 const Main = () => {
   return (

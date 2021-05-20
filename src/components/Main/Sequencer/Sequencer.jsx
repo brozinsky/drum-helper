@@ -13,9 +13,17 @@ const stepsData = 16;
 const Sequencer = () => {
     return (
         <div class="sequencer">
-            {channelData.map(({ channel }, index) => {
-                return <Channel key={index} steps={stepsData} channel={channel} />
-            })}
+            <div className="sequencer__label-container">
+                {channelData.map(({ name }, index) => {
+                    return <div className="sequencer__label" key={index}>{name}</div>
+                })}
+            </div>
+            <div className="sequencer__pad-container">
+                {channelData.map(({ channel }, index) => {
+                    return <Channel key={index} steps={stepsData} channel={channel} />
+                })}
+            </div>
+
         </div>
     )
 }
