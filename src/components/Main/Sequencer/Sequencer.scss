@@ -19,7 +19,7 @@ $main-darker-light: #8EACD6;
         border-radius: 20px;
         &-container{
             display: flex;
-            flex-direction: column;
+            flex-direction: column-reverse;
         }
     }
 }
@@ -41,6 +41,13 @@ $main-darker-light: #8EACD6;
 
     &-container{
         display: flex;
-        flex-direction: column;
+        flex-direction: column-reverse;
+    }
+
+    &--active{
+        background: $main-darker-light;
+    }
+    &--on{
+        background: $main-color;
     }
 }

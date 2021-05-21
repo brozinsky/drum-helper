@@ -1,9 +1,13 @@
 import React from 'react'
+import { BpmContext } from '../../../../contexts/BpmContext'
+import './BotPanel.scss'
+
 import { makeStyles } from '@material-ui/core/styles';
 import Slider from '@material-ui/core/Slider';
-import './BotPanel.scss'
 import Tooltip from '@material-ui/core/Tooltip';
 import Input from '@material-ui/core/Input';
+
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -26,21 +30,26 @@ function ValueLabelComponent(props) {
 
 const BpmSlider = () => {
     const classes = useStyles();
-    const [value, setValue] = React.useState(120);
+    const [bpm, setBpm] = React.useContext(BpmContext)
 
-    const handleSliderChange = (event, newValue) => {
-        setValue(newValue);
+    const handleSliderChange = (event, newBpm) => {
+        setBpm(newBpm);
+        console.log(bpm)
     };
 
     const handleInputChange = (event) => {
-        setValue(event.target.value === '' ? '' : Number(event.target.value));
+        setBpm(event.target.value === '' ? '' : Number(event.target.value));
+        console.log(bpm)
+
     };
 
     const handleBlur = () => {
-        if (value < 0) {
-            setValue(0);
-        } else if (value > 100) {
-            setValue(100);
+        console.log(bpm)
+
+        if (bpm < 50) {
+            setBpm(50);
+        } else if (bpm > 200) {
+            setBpm(200);
         }
     };
 
@@ -56,7 +65,7 @@ const BpmSlider = () => {
             />
             <Input
                 className={classes.input}
-                value={value}
+                value={bpm}
                 onChange={handleInputChange}
                 onBlur={handleBlur}
                 inputProps={{

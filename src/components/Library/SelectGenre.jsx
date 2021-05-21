@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React from 'react'
 import { SelectedKitContext } from '../../contexts/SelectedKitContext'
 
 import FormControl from '@material-ui/core/FormControl';
@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SelectGenre = () => {
-    const [kitSelected, setKitSelected] = useContext(SelectedKitContext);
+    const [kitSelected, setKitSelected] = React.useContext(SelectedKitContext);
     const classes = useStyles();
 
     const handleChange = (event) => {

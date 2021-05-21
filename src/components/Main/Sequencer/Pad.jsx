@@ -1,14 +1,34 @@
 import React from 'react'
 import './Sequencer.scss'
+import { ActiveStepContext } from '../../../contexts/ActiveStepContext'
 
-const Pad = ({ step, channel, isActive }) => {
+const Pad = ({ step, channel, isPlaying, isActive }) => {
+    const [isOn, setIsOn] = React.useState(false)
+    const [activeStep, setActiveStep] = React.useContext(ActiveStepContext)
+
+    const handleClick = () => {
+        setIsOn(!isOn)
+    }
+
+    // const repeat = () => {
+
+    // };
+
+
+    // React.useEffect(() => {
+    //     repeat()
+    // })
+
     return (
-        <div class={`pad
+        <button
+            onClick={handleClick}
+            class={`pad
             pad-${step}
             ch-${channel}
-            ${isActive ? 'pad--active' : ''}`}>
+            ${activeStep === step ? 'pad--active' : ''}
+            ${isOn ? 'pad--on' : ''}`}>
             {step}
-        </div>
+        </button>
     )
 }
 

@@ -6,16 +6,23 @@ import reportWebVitals from './reportWebVitals';
 import { SelectProvider } from './contexts/SelectContext';
 import { SelectedKitProvider } from './contexts/SelectedKitContext';
 import { PlayProvider } from './contexts/PlayContext';
+import { BpmProvider } from './contexts/BpmContext';
+import { ActiveStepProvider } from './contexts/ActiveStepContext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <PlayProvider>
-      <SelectedKitProvider>
-        <SelectProvider>
-          <App />
-        </SelectProvider>
-      </SelectedKitProvider>
-    </PlayProvider>
+
+    <BpmProvider>
+      <PlayProvider>
+        <ActiveStepProvider>
+          <SelectedKitProvider>
+            <SelectProvider>
+              <App />
+            </SelectProvider>
+          </SelectedKitProvider>
+        </ActiveStepProvider>
+      </PlayProvider>
+    </BpmProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
