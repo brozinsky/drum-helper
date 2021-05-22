@@ -1,7 +1,6 @@
 import React from 'react'
 import './BotPanel.scss'
 
-
 const IconButton = ({ icon, title }) => {
     return (
         <button className="panel__icon-button">

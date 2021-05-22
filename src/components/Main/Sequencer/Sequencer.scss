@@ -1,5 +1,6 @@
-$main-color: #205BAD;
+$main-color: #3263a8;
 $main-light: #C4D4EA;
+$main-light-2: #acc6e9;
 $main-darker-light: #8EACD6;
 
 .sequencer{
@@ -22,6 +23,11 @@ $main-darker-light: #8EACD6;
             flex-direction: column-reverse;
         }
     }
+
+    &__pad-container{
+        display: flex;
+        flex-direction: column-reverse;
+    }
 }
 
 .channel{
@@ -34,15 +40,19 @@ $main-darker-light: #8EACD6;
     width: 34px;
     background: $main-light;
     margin: 1.5px 1.5px;
+    color: transparent;
+
     &:hover{
         background: $main-darker-light;
         cursor: pointer;
     }
 
-    &-container{
-        display: flex;
-        flex-direction: column-reverse;
+    &--qt{
+        background: $main-light-2;
+        margin-left: 5px;
     }
+
+
 
     &--active{
         background: $main-darker-light;
@@ -50,4 +60,6 @@ $main-darker-light: #8EACD6;
     &--on{
         background: $main-color;
     }
+
+
 }

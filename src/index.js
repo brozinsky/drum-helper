@@ -11,7 +11,6 @@ import { ActiveStepProvider } from './contexts/ActiveStepContext';
 
 ReactDOM.render(
   <React.StrictMode>
-
     <BpmProvider>
       <PlayProvider>
         <ActiveStepProvider>
