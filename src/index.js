@@ -8,20 +8,27 @@ import { SelectedKitProvider } from './contexts/SelectedKitContext';
 import { PlayProvider } from './contexts/PlayContext';
 import { BpmProvider } from './contexts/BpmContext';
 import { ActiveStepProvider } from './contexts/ActiveStepContext';
+import { PresetProvider } from './contexts/PresetContext';
+import { PresetDataProvider } from './contexts/PresetDataContext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <BpmProvider>
-      <PlayProvider>
-        <ActiveStepProvider>
-          <SelectedKitProvider>
-            <SelectProvider>
-              <App />
-            </SelectProvider>
-          </SelectedKitProvider>
-        </ActiveStepProvider>
-      </PlayProvider>
-    </BpmProvider>
+    <PresetDataProvider>
+      <PresetProvider>
+        <BpmProvider>
+          <PlayProvider>
+            <ActiveStepProvider>
+              <SelectedKitProvider>
+                <SelectProvider>
+                  <App />
+                </SelectProvider>
+              </SelectedKitProvider>
+            </ActiveStepProvider>
+          </PlayProvider>
+        </BpmProvider>
+      </PresetProvider>
+    </PresetDataProvider>
+
   </React.StrictMode>,
   document.getElementById('root')
 );
