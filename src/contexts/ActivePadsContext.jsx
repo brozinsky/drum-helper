@@ -1,29 +1,22 @@
 import { useState, createContext } from 'react';
-export const PresetContext = createContext();
+export const ActivePadsContext = createContext();
 
-// changes from
-
-// name: '--init--',
-//         defaultBpm: 120,
-//         grid: 16,
-//         sequencer:
-
-export const PresetProvider = ({ children }) => {
-    const [preset, setPreset] = useState([
+export const ActivePadsProvider = ({ children }) => {
+    const [activePads, setActivePads] = useState([
         {
             channel: 1, name: 'Kick',
             isOn: [
-                true, false, true, false,
                 false, false, false, false,
-                false, false, true, true,
-                true, false, false, false,]
+                false, false, false, false,
+                false, false, false, false,
+                false, false, false, false,]
         },
         {
             channel: 2, name: 'Snare',
             isOn: [
                 false, false, false, false,
                 false, false, false, false,
-                false, true, false, false,
+                false, false, false, false,
                 false, false, false, false,]
         },
         {
@@ -31,7 +24,7 @@ export const PresetProvider = ({ children }) => {
             isOn: [
                 false, false, false, false,
                 false, false, false, false,
-                false, true, false, false,
+                false, false, false, false,
                 false, false, false, false,]
         },
         {
@@ -39,14 +32,15 @@ export const PresetProvider = ({ children }) => {
             isOn: [
                 false, false, false, false,
                 false, false, false, false,
-                false, false, false, true,
+                false, false, false, false,
                 false, false, false, false,]
         }
-    ])
+    ]
+    )
 
     return (
-        <PresetContext.Provider value={[preset, setPreset]}>
+        <ActivePadsContext.Provider value={[activePads, setActivePads]}>
             {children}
-        </PresetContext.Provider>
+        </ActivePadsContext.Provider>
     );
 }

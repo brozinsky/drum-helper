@@ -10,6 +10,45 @@ export const PresetDataProvider = ({ children }) => {
                     type: 'house',
                     presets: [
                         {
+                            name: '--init--',
+                            defaultBpm: 120,
+                            grid: 16,
+                            sequencer: [
+                                {
+                                    channel: 1, name: 'Kick',
+                                    isOn: [
+                                        false, false, false, false,
+                                        false, false, false, false,
+                                        false, false, false, false,
+                                        false, false, false, false,]
+                                },
+                                {
+                                    channel: 2, name: 'Snare',
+                                    isOn: [
+                                        false, false, false, false,
+                                        false, false, false, false,
+                                        false, false, false, false,
+                                        false, false, false, false,]
+                                },
+                                {
+                                    channel: 3, name: 'Closed hat',
+                                    isOn: [
+                                        false, false, false, false,
+                                        false, false, false, false,
+                                        false, false, false, false,
+                                        false, false, false, false,]
+                                },
+                                {
+                                    channel: 4, name: 'Open hat',
+                                    isOn: [
+                                        false, false, false, false,
+                                        false, false, false, false,
+                                        false, false, false, false,
+                                        false, false, false, false,]
+                                }
+                            ]
+                        },
+                        {
                             name: 'house-1',
                             defaultBpm: 100,
                             grid: 16,

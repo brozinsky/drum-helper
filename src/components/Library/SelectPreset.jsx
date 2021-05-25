@@ -1,5 +1,6 @@
 import React from 'react'
-import { SelectedKitContext } from '../../contexts/SelectedKitContext'
+import { PresetDataContext } from '../../contexts/PresetDataContext'
+import { PresetContext } from '../../contexts/PresetContext'
 
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
@@ -17,23 +18,25 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SelectPreset = () => {
-    const [kitSelected, setKitSelected] = React.useContext(SelectedKitContext);
+    const [presetData,] = React.useContext(PresetDataContext)
+    const [preset, setPreset] = React.useContext(PresetContext)
     const classes = useStyles();
 
     const handleChange = (event) => {
-        setKitSelected(event.target.value);
+        setPreset(event.target.value);
+        console.log(preset)
     };
 
     return (
         <FormControl className={classes.formControl}>
             <Select
                 className={classes.selectEmpty}
-                value={kitSelected}
+                value={preset}
                 onChange={handleChange}
             >
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
+                {presetData[0].genres[0].presets.map((preset, index) => {
+                    return <MenuItem value={preset} key={index}>{preset.name}</MenuItem>
+                })}
             </Select>
         </FormControl>
     )

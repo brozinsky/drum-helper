@@ -12,10 +12,11 @@ const Sequencer = () => {
     const [activeStep, setActiveStep] = React.useContext(ActiveStepContext)
     const [isPlayActive,] = React.useContext(PlayContext)
     const [bpm,] = React.useContext(BpmContext)
-    const [preset, setPreset] = React.useContext(PresetContext)
+    const [preset,] = React.useContext(PresetContext)
 
     let interval = (60 / bpm / 2) * 1000;
 
+    //loop over the 4 bars on sequencer
     const repeat = () => {
         if (isPlayActive) {
             setTimeout(() => {
@@ -35,15 +36,15 @@ const Sequencer = () => {
     return (
         <div className="sequencer">
             <div className="sequencer__label-container">
-                {preset.sequencer.map(({ name }, index) => {
+                {preset.map(({ name }, index) => {
                     return <div className="sequencer__label" key={index}>{name}</div>
                 })}
             </div>
             <div className="sequencer__pad-container">
-                {preset.sequencer.map(({ channel, isOn }, index) => {
+                {preset.map(({ channel, isOn }, index) => {
                     return <Channel
                         key={index}
-                        steps={preset.grid}
+                        steps={16}
                         channel={channel}
                         isOnPreset={isOn}
                     />

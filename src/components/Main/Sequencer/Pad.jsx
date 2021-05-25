@@ -2,18 +2,18 @@ import React from 'react'
 import './Sequencer.scss'
 import { ActiveStepContext } from '../../../contexts/ActiveStepContext'
 import { PlayContext } from '../../../contexts/PlayContext'
-import useSound from 'use-sound'
+import { PresetContext } from '../../../contexts/PresetContext'
 
+import useSound from 'use-sound'
 import kickEdm from '../../../samples/edm-kick.mp3'
 import snareEdm from '../../../samples/edm-snare.mp3'
 import hhEdm from '../../../samples/edm-hh.mp3'
 import hhOpenEdm from '../../../samples/edm-hh-open.mp3'
 
-
 const Pad = ({ step, channel, isOnPreset }) => {
     const [activeStep,] = React.useContext(ActiveStepContext)
     const [isPlayActive,] = React.useContext(PlayContext)
-    const [isOn, setIsOn] = React.useState(false)
+    const [preset, setPreset] = React.useContext(PresetContext)
 
     const [playSnare] = useSound(snareEdm);
     const [playKick] = useSound(kickEdm);
@@ -21,17 +21,29 @@ const Pad = ({ step, channel, isOnPreset }) => {
     const [playHhOpen] = useSound(hhOpenEdm);
 
     const handleClick = () => {
-        setIsOn(!isOn)
-    }
+        // previous isOn array on this channel
+        const prevIsOn = preset[channel - 1].isOn
 
-    const checkIsOn = () => {
-        if (isOnPreset) {
-            setIsOn(!isOn)
-        }
+        // destined isOn array with changed flag on clicked pad
+        const newIsOn = prevIsOn.map((isOn, index) => {
+            if (index === step) {
+                return !isOn
+            } else return isOn
+        })
+
+        const newPreset = preset.map((preset, index) => {
+            if (index === (channel - 1)) {
+                return { channel: preset.channel, name: preset.name, isOn: newIsOn }
+            } else return { channel: preset.channel, name: preset.name, isOn: preset.isOn }
+        })
+
+        setPreset(() =>
+            newPreset
+        )
     }
 
     const playSample = () => {
-        if (isOn && activeStep === step && isPlayActive) {
+        if ((isOnPreset) && activeStep === step && isPlayActive) {
             console.log(`hit da ${channel}!`)
 
             switch (channel) {
@@ -48,7 +60,6 @@ const Pad = ({ step, channel, isOnPreset }) => {
                     playHhOpen()
                     break;
                 default:
-                    //jakiś kod
                     break;
             }
         }
@@ -58,23 +69,19 @@ const Pad = ({ step, channel, isOnPreset }) => {
         playSample()
     })
 
-    React.useEffect(() => {
-        checkIsOn()
-    }, [])
-
     return (
         <button
             onClick={handleClick}
             class={`pad
             pad-${step}
             ch-${channel}
-            ${activeStep === step && isPlayActive ? 'pad--active' : ''}
             ${step % 4 === 0 ? 'pad--qt' : ''}
-            ${isOn ? 'pad--on' : ''}`}>
+            ${activeStep === step && isPlayActive ? 'pad--active' : ''}
+             ${isOnPreset ? 'pad--on' : ''}
+            `}>
             {step}
         </button>
     )
 }
-
 
 export default Pad
